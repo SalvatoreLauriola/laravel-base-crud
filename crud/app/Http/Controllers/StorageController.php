@@ -27,7 +27,7 @@ class StorageController extends Controller
      */
     public function create()
     {
-        //
+        return view('storages.create');
     }
 
     /**
@@ -38,7 +38,26 @@ class StorageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        //Validazione (lungo tot ecc..)
+        $request->validate([
+            'name' => 'required|unique:storages|max:20',
+            'description' => 'required'
+        ]);
+
+        //Save new classroom on DB
+        $storage = new Storage();
+        $storage->name = $data['name'];
+        $storage->description = $data['description'];
+        $saved = $storage->save();
+
+        //redirect to show
+        if($saved) {
+            $newStore = Storage::find($storage->id);
+            return redirect()->route('storages.show', $newStore);
+        }
+
     }
 
     /**
@@ -47,9 +66,10 @@ class StorageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Storage $storage)
     {
-        //
+        //cerca per ID Automaticamente
+        return view('storages.show', compact('storage'));
     }
 
     /**

@@ -17,9 +17,11 @@
             <tbody>
                 @foreach ($storages as $storage)
                     <tr>
-                        <td>{{ storage->id }}</td>
-                        <td>{{ storage->name }}</td>
-                        <td>SHOW</td>
+                        <td>{{ $storage->id }}</td>
+                        <td>{{ $storage->name }}</td>
+                        <td>                                                
+                            <a class="btn btn-success "href="{{ route('storages.show', $storage) }}">Show</a>
+                        </td>
                         <td>Update</td>
                         <td>Delete</td>
                     </tr>
