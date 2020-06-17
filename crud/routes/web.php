@@ -12,5 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//HomePage
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index');
+//Storages
+Route::resource('storages', 'StorageController');
