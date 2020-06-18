@@ -19,11 +19,11 @@
         @method('POST')
 
         <div class="form-group">
-            <input type="text" class="form-control"
+            <input type="text" class="form-control" value="{{ old('name') }}"
                 name="name" placeholder="class name">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control"
+            <input type="text" class="form-control" value="{{ old('name') }}"
                 name="description" placeholder="class description">
         </div>
         <input class="btn btn-primary" type="submit" value="Create">
